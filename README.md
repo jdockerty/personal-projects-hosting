@@ -6,4 +6,4 @@ Small hosting repository for my personal projects infrastructure, currently eval
 
 Once the `terraform apply` runs successfully, the `cluster_id` output can be used to retrieve the kube config file using
 
-    doctl kubernetes cluster kubeconfig save <cluster_id>
+    terraform output -raw cluster_id | xargs doctl kubernetes cluster kubeconfig save

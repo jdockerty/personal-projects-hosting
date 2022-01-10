@@ -1,0 +1,10 @@
+
+
+Applications installed!
+
+{{ if .Values.argocd.enabled }}
+ArgoCD has been installed to the cluster in the {{ .Release.Namespace }} namespace.
+
+Retrieve the initial administrator password by using the command
+    kubectl --namespace {{ .Release.Namespace }} get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d | xargs
+{{- end -}}

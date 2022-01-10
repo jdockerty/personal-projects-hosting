@@ -1,0 +1,24 @@
+
+argocd:
+  enabled: true
+  fullnameOverride: argocd
+  destination:
+    server: https://kubernetes.default.svc
+
+nginx:
+  enabled: true
+  fullnameOverride: nginx
+
+# Does require manual change to the service once deployed due to a bug. This removes the http name and replaces it with 'targetPort: 8080'
+# Ref: https://github.com/bitnami-labs/sealed-secrets/issues/694#issuecomment-997370679
+sealedsecrets:
+  enabled: false
+  fullnameOverride: sealed-secrets-controller
+  namespace: bitnami
+  targetRevision: 2.0.2
+
+certmanager:
+  enabled: true
+  installCRDs: true
+  fullnameOverride: certmanager
+  email: jdockerty19@gmail.com

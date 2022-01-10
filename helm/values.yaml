@@ -7,6 +7,11 @@ argocd:
 
 github:
   repositories: 
+    personalProjectsHosting:
+      name: personal-projects-infra
+      type: helm
+      url: https://github.com/jdockerty/personal-projects-infra
+      path: helm
     dailyQuestions:
       name: daily-questions-config
       type: git

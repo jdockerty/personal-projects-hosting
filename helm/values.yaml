@@ -5,6 +5,13 @@ argocd:
   destination:
     server: https://kubernetes.default.svc
 
+github:
+  repositories: 
+    dailyQuestions:
+      name: daily-questions-config
+      type: git
+      url: https://github.com/jdockerty/daily-questions-config
+
 nginx:
   enabled: true
   fullnameOverride: nginx

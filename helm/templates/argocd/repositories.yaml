@@ -34,3 +34,17 @@ stringData:
   type: {{ .type }}
   url: {{ .url }}
 {{- end -}}
+---
+{{- with .Values.github.repositories.personalProjectsHosting -}}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .name }}
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: {{ .type }}
+  url: {{ .url }}
+  path: {{ .path }}
+{{- end -}}

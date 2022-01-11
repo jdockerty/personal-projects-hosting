@@ -35,7 +35,6 @@ stringData:
   url: {{ .url }}
 {{- end }}
 ---
-# We're allowing ArgoCD to manage its own repository state too.
 {{- with .Values.github.repositories.personalProjectsHosting -}}
 apiVersion: v1
 kind: Secret
@@ -48,3 +47,4 @@ stringData:
   type: {{ .type }}
   url: {{ .url }}
 {{- end }}
+# We're allowing ArgoCD to manage its own repository state too.

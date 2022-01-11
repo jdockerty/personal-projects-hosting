@@ -33,3 +33,9 @@ certmanager:
   installCRDs: true
   fullnameOverride: certmanager
   email: jdockerty19@gmail.com
+
+applications:
+  dailyQuestions:
+    name: daily-questions
+    path: kubernetes
+    namespace: daily-questions

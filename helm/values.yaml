@@ -39,3 +39,24 @@ applications:
     name: daily-questions
     path: kubernetes
     namespace: daily-questions
+  
+  # This is a helm chart provided by influxdata
+  influxdata:
+    enabled: true
+    ingress:
+      enabled: true
+      name: influxdb-ingress
+    namespace: monitoring
+
+    influxdb:
+      name: influxdb
+      url: https://helm.influxdata.com
+      chart: influxdb2
+      targetRevision: 2.0.6
+
+  # This is a helm chart provided by influxdata
+    telegraf:
+      name: telegraf
+      url: https://helm.influxdata.com
+      chart: telegraf
+      targetRevision: 1.8.10

@@ -1,0 +1,23 @@
+{{ if .Values.applications.influxdata.enabled }}
+{{ $ns := $.Values.applications.influxdata.namespace }}
+{{ with .Values.applications.influxdata.influxdb }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: {{ .url }}
+    targetRevision: {{ .targetRevision | quote }}
+    chart: {{ .chart  }}
+  destination:
+    server: {{ $.Values.argocd.destination.server }}
+    namespace:  {{ $ns }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+{{- end -}}
+{{- end -}}

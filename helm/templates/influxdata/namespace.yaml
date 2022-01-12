@@ -1,0 +1,8 @@
+{{ if .Values.applications.influxdata.enabled }}
+{{ with .Values.applications.influxdata }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .namespace }}
+{{- end -}}
+{{- end -}}

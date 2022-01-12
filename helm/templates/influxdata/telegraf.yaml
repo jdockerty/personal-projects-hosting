@@ -14,7 +14,7 @@ spec:
     chart: {{ .chart  }}
   destination:
     server: {{ $.Values.argocd.destination.server }}
-    namespace:  {{ $ns }}
+    namespace: {{ $ns }}
   syncPolicy:
     automated:
       prune: true

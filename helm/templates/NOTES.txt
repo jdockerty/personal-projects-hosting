@@ -8,3 +8,19 @@ ArgoCD has been installed to the cluster in the {{ .Release.Namespace }} namespa
 Retrieve the initial administrator password by using the command
     kubectl --namespace {{ .Release.Namespace }} get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d | xargs
 {{- end -}}
+
+{{ with .Values.applications.influxdata }}
+{{ if .enabled }}
+InfluxDB and Telegraf has been installed.
+
+You can access the UI via port-forwarding locally, using the following command
+
+    INFLUXDB_SVC=$(kubectl get svc -n {{ .namespace }} -l app.kubernetes.io/instance=influxdb -o jsonpath='{.items[*].metadata.name}')
+    kubectl --namespace {{ .namespace }} port-forward svc/"${INFLUXDB_SVC}" 8086:80 
+
+The initial password, for use with the 'admin' username, can be retrieved using
+    
+    kubectl --namespace {{ .namespace }} get secrets influxdb-influxdb2-auth -o jsonpath='{.data.admin-password}' | base64 -d | xargs
+    
+{{- end -}}
+{{- end -}}

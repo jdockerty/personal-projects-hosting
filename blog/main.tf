@@ -18,6 +18,7 @@ resource "digitalocean_app" "blog" {
       github {
         repo   = "jdockerty/blog"
         branch = "main"
+        deploy_on_push = true
       }
     }
   }
